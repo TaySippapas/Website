@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: white; font-size: 60px;">Create your SmartDine account</h1>
+        <h1 style="color: white;">Please fill the information below</h1>
+        <form id="signupForm">
+            <input type="email" id="email" required placeholder="Enter your email" />
+            <input type="text" id="username" required placeholder="Enter your username" />
+            <input type="password" id="password" required placeholder="Enter your password" />
+            <div class="container2">
+                <button type="submit" class="block">Create an account</button>
+            </div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='signup.js') }}"></script>
+</body>
+</html>

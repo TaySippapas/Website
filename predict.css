@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+  /* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #000000;
+    color: #FFFFFF;
+}
+.container {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+/* Smart Dine */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    color: #FFFFFF;
+}
+.header img {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Keep the image proportions consistent */
+    border-radius: 50%; /* Optional, for a circular profile picture */
+}
+a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits color from parent element */
+    cursor: pointer; /* Keeps the pointer style */
+}
+

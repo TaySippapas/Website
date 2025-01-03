@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Home</title>
+    <style>
+    body 
+    {
+        font-family: 'Inter', sans-serif;
+        background-color: black;
+        color: #FFFFFF;
+        background-size: cover;
+        opacity: 90%;
+    }
+    .card-img-top {
+    object-fit: cover; /* Ensu res images fit within the card */
+    height: 350px; /* Set image height */
+    }
+    .embellishment-line {
+    width: 25%; 
+    height: 2px; 
+    background-color: white; 
+    margin: 20px auto; 
+    border-radius: 10px; 
+    }
+    .logo
+    {
+      width: 124px;
+      height: 124px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+    }
+    a 
+    {
+      text-decoration: none; /* Removes the underline */
+      color: inherit; /* Inherits the text color from the parent element */
+    }
+    a:hover {
+      color: inherit; /* Keep the same color when hovered */
+      text-decoration: underline; /* Remove underline on hover */
+    }
+    .profile-pic 
+    {
+      width: 50px; /* Set your desired width */
+      height: 50px; /* Set your desired height */
+      border-radius: 50%; /* Makes it circular */
+      outline: none; /* Removes outline on focus */
+    }
+
+    button
+    {
+      outline: none; /* Ensure the outline is also removed when focused via the button */
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row h2 mt-4">
+          <!-- Offset for first 2 columns -->
+          <div class="col-2 offset-1 text-center"><a href="/aboutus">About us</a></div>
+          <!-- Offset for columns 4 to 8 -->
+          <div class="col-1 offset-1 d-flex justify-content-between gap-4">
+            <div><a href="/research">Research</a></div>
+            <div><a href="/product">Products</a></div>
+            <div>Safety</div>
+            <div>Business</div>
+          </div>
+          {% if logged_in %}
+          <div class="col-1 offset-4">
+            <button id="openmodal2" data-bs-toggle="modal" data-bs-target="#profileModal">
+              <img src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" class="profile-pic" alt="Profile">
+            </button>
+            <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">User Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <button class="btn btn-outline-primary">View User Profile</p></button>
+                    <hr>
+                    <form action="{{ url_for('logout.logout') }}" method="POST">
+                      <button class="btn btn-outline-danger">Log Out</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% else %}
+            <div class="col-1 offset-4 text-end"><a href="/login">Login</a></div>
+            <div class="col-1"><a href="/signup">Sign up</a></div>
+          {% endif %}
+        </div>
+        <div class="text-center">
+          <div class="display-3 mt-5">Getting started with SmartDine</div>
+          {% if logged_in %}
+            <button class="btn btn-warning mt-5 fs-3"><a href="/predict">Try SmartDine</a></button>
+          {% else %}
+            <button id="openmodal" class="btn btn-warning mt-5 fs-3" data-bs-toggle="modal" data-bs-target="#modal1">Try SmartDine →</button>
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="smartDineModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p style="color: black;">Please log in first to access all available features and enhance your experience.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="/login" class="btn btn-warning">Login</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        <div class="row text-center mt-5">
+        <div class="col-4 d-flex justify-content-center">
+          <div class="card bg-white text-dark " style="width: 30rem;">
+            <img src="https://i.pinimg.com/736x/97/56/fd/9756fdf6fb3999c2014534a10beba1ff.jpg" class="card-img-top" alt="Card Image">
+            <div class="card-body">
+              <p class="card-text h5">Check out what you need for the day</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+          <div class="card bg-white text-dark" style="width: 30rem;">
+            <img src="https://hospitalityinsights.ehl.edu/hs-fs/hubfs/Blog-EHL-Insights/Images-EHL-Insights/restaurant-management-skills.jpeg?width=777&height=429&name=restaurant-management-skills.jpeg" class="card-img-top" alt="Card Image">
+            <div class="card-body">
+              <p class="card-text h5">Improve restaurants management experience</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+          <div class="card bg-white text-dark" style="width: 30rem;">
+            <img src="https://i.pinimg.com/736x/89/e4/8d/89e48d569a795f33d730cedbc6ac1cf7.jpg" class="card-img-top" alt="Card Image">
+            <div class="card-body">
+              <p class="card-text h5">Increase inventory management efficiency</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" style="margin-top: 100px;">
+          <div class="embellishment-line"></div>
+          <div class="display-6">Trusted by thousands of operators.</div>
+          <div class="d-flex justify-content-center gap-5 mt-4">
+            <div class="logo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/McDonald%27s_square_2020.svg/800px-McDonald%27s_square_2020.svg.png');"></div>
+            <div class="logo" style="background-image: url('https://www.futurepark.co.th/stocks/shop/c300x300/np/qk/p6xqnpqkxod/logo_170823_en.jpg');"></div>
+            <div class="logo" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY9E0M35XIUJ3QDs6qiy_eXvE2Q4Vr3Gdw9A&s');"></div>
+            <div class="logo" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-mwH8D7nmaq8OOj_A5qI4qh4LnXhuJtN5vQ&s');"></div>
+            <div class="logo" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD5jbXisAya2MLcLHwVtfzZcJQdZ3MUh-HcQ&s');"></div>
+          </div>
+          <div class="p-5 text-secondary">&copy; 2024 Smart Dine. All rights reserved.</div> 
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

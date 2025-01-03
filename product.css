@@ -1,0 +1,48 @@
+body{
+    background-image: url('https://wallpapers.com/images/hd/food-4k-jx0j7rqea6yv9phh.jpg');
+    background-size: cover;
+    font-family: 'Inter', sans-serif;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
+}
+.left-grid{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1;
+}
+.right-grid{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
+}
+.header {
+    font-size: 50px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.main-content {
+    font-size: 21px;
+    line-height: 23px;
+    color: #FFFFFF;
+    line-height: 1;   
+}
+.section-header {
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+}
+img{
+    height: 480px;
+    width: 700px;
+    margin-left: 50px;
+    margin-top: 50px;
+}

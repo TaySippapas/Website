@@ -1,0 +1,103 @@
+body{
+    background-image: url('https://wallpapercave.com/wp/wp11872886.jpg');
+    background-size: cover;
+    font-family: 'Inter', sans-serif;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.left-grid{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1;
+}
+.right-grid{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    grid-column: 2;
+}
+.header {
+    font-size: 28px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.title {
+    font-size: 60px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: -40px;
+}
+.main-content {
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+    line-height: 1;
+}
+.section-content {
+    font-size: 29px;
+    margin-left: -30px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.section-header {
+    font-size: 23px;
+    line-height: 23px;
+    color: #FFFFFF;
+    line-height: 1;
+}
+.Option {
+    font-size: 21px;
+    line-height: 15px;
+    margin-left: -200px;
+    color: #FFFFFF;
+    line-height: 1;
+}
+.img{
+    height: 200px;
+    width: 230px;
+  
+}
+.img2{
+    height: 200px;
+    width: 230px;
+    
+}
+.img3{
+    height: 200px;
+    width: 500px;
+    margin-top: 30px;
+    margin-left: -200;
+}
+.img4{
+    height: 200px;
+    width: 230px;
+}
+.img5{
+    height: 200px;
+    width: 230px;
+    margin-right: 100;
+}
+
+.container2{
+    display: flex;
+    justify-content: space-between;  
+    gap: 50px;
+    margin-top: 25px;
+}
+.container3{
+    display: flex;
+    justify-content: space-between;  
+    gap: 50px;
+    margin-top: 35px;
+    margin-left: -75px;
+}
+.container4{
+    display: flex;
+    justify-content: center; 
+}
+

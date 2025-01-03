@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dine Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: black;
+            color: #FFFFFF;
+            background-size: cover;
+            opacity: 90%;
+        }
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            outline: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover {
+          color: inherit; /* Keep the same color when hovered */
+          text-decoration: underline; /* Remove underline on hover */
+        }
+        .dropdown-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Align contents to the left */
+        }
+        .fixed-table {
+          table-layout: fixed; /* Ensures columns don't resize dynamically */
+          width: 100%; /* Set a fixed width for the table */
+        }
+        .fixed-table th,
+        .fixed-table td {
+          width: 16.66%; /* Equal width for six columns */
+      }   
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-4 text-center mt-4">
+                <h2><a href="/">Smart Dine</a></h2>
+            </div>
+            <div class="col-4 text-center offset-4 mt-4">
+                <button id="openmodal2" data-bs-toggle="modal" data-bs-target="#profileModal">
+                    <img src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" class="profile-pic" alt="Profile">
+                </button>
+                <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="profileModalLabel">User Profile</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <button class="btn btn-outline-primary"><p style="color: black;">View User Profile</p></button>
+                                <hr>
+                                <form action="{{ url_for('logout.logout') }}" method="POST">
+                                    <button class="btn btn-outline-danger">Log Out</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+        <h2 class="text-center mt-4">Restaurant Data</h2>
+        <table class="table table-striped table-bordered text-white fixed-table">
+            <thead>
+                <tr>
+                    <th>Day Of Week</th>
+                    <th>Season</th>
+                    <th>Weather</th>
+                    <th>Time</th>
+                    <th>Special Event</th>
+                    <th>Special Promotion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-white">
+                    <td>
+                        <div class="dropdown-container">
+                            <span id="day-of-week" class="selected-value"></span>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('day-of-week', 'Monday')">Monday</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('day-of-week', 'Tuesday')">Tuesday</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('day-of-week', 'Wednesday')">Wednesday</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('day-of-week', 'Thursday')">Thursday</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('day-of-week', 'Friday')">Friday</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('day-of-week', 'Saturday')">Saturday</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('day-of-week', 'Sunday')">Sunday</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dropdown-container">
+                            <span id="season" class="selected-value"></span>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('season', 'Dry')">Dry</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('season', 'Cold')">Cold</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('season', 'Rainy')">Rainy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dropdown-container">
+                            <span id="weather" class="selected-value"></span>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('weather', 'Cloudy')">Cloudy</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('weather', 'Rainy')">Rainy</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('weather', 'Clear')">Clear</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dropdown-container">
+                            <span id="time" class="selected-value"></span>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('time', 'Morning')">Morning</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('time', 'Afternoon')">Afternoon</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('time', 'Evening')">Evening</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('time', 'Night')">Night</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dropdown-container">
+                            <span id="special-event" class="selected-value"></span>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('special-event', 'Yes')">Yes</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('special-event', 'No')">No</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dropdown-container">
+                            <span id="special-promotion" class="selected-value"></span>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('special-promotion', 'Yes')">Yes</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="showSelected('special-promotion', 'No')">No</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center"><button class="btn btn-success btn-lg" onclick="senddata()">Predict</button></div>
+        <div class="text-center mt-4 h2">The predicted result</div>
+        <div class="text-center mt-2 h4" id="result"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url_for('static', filename='predict.js')}}"></script>
+</body>
+</html>
